@@ -1,10 +1,36 @@
 #RECETARIO
+'''
+Primero dara la bienvenida, informara la ruta de las recetas, y la cantidad de recetas que hay en esa ruta.
+Luego dara las opciones al usuario:
+                                                        1 Leer receta------------Elegir categoria
+                                                                            |---------- Mostrar recetas
+                                                                            |---- ------Elegir Receta
+                                                        2 Crear receta---- -----Elegir Categoria
+                                                                                |--------Elegir nombre
+                                                                                |--------Escribir receta
+                                                        3 Crear Categoria ----ELegir Nombre
+                                                                                    |----Crear carpeta nueva en directorio
+                                                        4 Eliminar Receta ------Elegir categoria
+                                                                                  |----- Mostrar recetas
+                                                                                  |----- Elegir Receta
+                                                                                  |----- Borrar archivo
+                                                        5 Eliminar Categoria--Elegir Categoria
+                                                                                        |- Borrar Carpeta
+                                                        6 Finalizar programa
+                                                                                        |--- SALIR
+
+'''
+def raiz():
+    from pathlib import Path
+    print(Path.home())
+    
 
 def bienvenida():
     from pathlib import Path
-    ruta= Path.home()
-    ruta_recetas =  Path(ruta,'Python\Proyectos\Proyecto Dia_6-RECETARIO')
-    print ("Bienvenido Chef! Las recetas estan en", ruta_recetas)
+    raiz= Path.home()
+    recetas=Path(raiz,'Desktop\Programacion\Proyecto Dia_6-RECETARIO')
+    print ("Bienvenido Chef!\n Las recetas estan en", recetas)
+    print("\n")
 
 def opciones():
    
@@ -15,74 +41,38 @@ def opciones():
     print('[5] Eliminar Categoría')
     print('[6] Finalizar Programa')
     print('____________________')
-  
+    elije_op=int(input(">: "))
 
-def eleccion(opciones):
+def categorias():
+    print("[1] Carnes")
+    print("[2] Pastas")
+    print("[3] Ensaladas")
+    print("[4] Postres")
+    print("____________")
+    elije_cat=int(input(">: "))
+
+def programa(opciones,categorias):
      from pathlib import Path
-     ruta=Path.home()
-     ruta_recetas =  Path(ruta,'Python\Proyectos\Proyecto Dia_6-RECETARIO')
-     ruta_carnes= Path(ruta_recetas,'Carnes')
-     ruta_ensaladas=0
-     ruta_postres=0
-     ruta_pastas=0
-     opcion_elegida= int(input('Ingresa una opcion: '))
-     if opcion_elegida in range(1,7):
-        if opcion_elegida==1:
-            print('[1] Carne')
-            print('[2] Pastas')
-            print('[3] Ensaladas')
-            print('[4] Postres')
-            leer=int(input('Elija Categoria: '))
-            if leer in range(1,5):
-                if leer==1:
-                    print('Mostrando recetas de Carnes')
-                    
-                if leer==2:
-                    print('Mostrando recetas de Pastas')
-                    
-                if leer==3:
-                    print('Mostrando recetas de Ensaladas')
-                    
-                if leer==4:
-                    print('Mostrando recetas de Postres')
-                    
-     print('Opcion erronea')
-     return opciones()
+     while elije_op !=6:
+        if elije_op in range(1,7):
+            if elije_op==1:
+                categorias()
+                if elije_cat==1:
+                    print("Mostrando recetas de carnes")
+                
+                if leer in range(1,5):
+                    if leer==1:
+                        print('Mostrando recetas de Carnes') #Aqui mostraria las recetas.txt del directorio "Carnes"
+                        opciones()
+                    if leer==2:
+                        print('Mostrando recetas de Pastas')#Aqui mostraria las recetas.txt del directorio "Pastas"
+                        continue
+                    if leer==3:
+                        print('Mostrando recetas de Ensaladas')
+                    if leer==4:
+                        print('Mostrando recetas de Postres')
 
-import os
+bienvenida()
 opciones()
-eleccion(opciones)
-
-        
+programa()
     
-
-
-    
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-#FUNCIONES DEL PROGRAMA
-
-'''
-1) Leer receta
-2) Crear Receta
-3) Crear Categoría
-4) Eliminar Receta
-5) Eliminar Categoría
-6) Finalizar Programa
-'''
-
-#opcion=input("Ingresa una opción: ")
-
